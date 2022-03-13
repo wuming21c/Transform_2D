@@ -4,13 +4,16 @@
  * on a rectangle */
 
 #include<iostream>
+//#include<stdlib.h>
 #include<string>
 #include<opencv2/highgui.hpp>
 #include<opencv2/imgproc.hpp>
+#include<Eigen/Dense>
 
 using std::cout;
 using std::endl;
 using namespace cv;
+using namespace Eigen;
 
 // Constants
 std::string win_name = "Transform_2D_Rectangle";
@@ -33,10 +36,12 @@ int p = 45;		// perspective projection angle
 
 int line_thickness = 2;
 
-// Function: call back function to draw shapes
-void draw_shapes(int, void*);
+// Function Declaration:
+void draw_shapes(int, void*);	//call back function to draw shapes
+//VectorXd matrix_multi(MatrixXd, VectorXd);
+	
 
-
+// Main()
 int main( int argc, char* argv[])
 {
 	src.setTo(255);
@@ -67,6 +72,7 @@ int main( int argc, char* argv[])
 	Mat src_p; 	// ..	   perspective
 	*/
 
+
 	namedWindow( win_name, WINDOW_AUTOSIZE );
 	imshow( win_name, src);
 	const char* TrackbarName = "Rectangle Size";
@@ -92,3 +98,15 @@ void draw_shapes(int, void*) {
 
 	return ;
 }
+
+/*
+// matrix multiplification, to perform 'manual' transform // NOT necessary...
+VectorXd matrix_multi(MatrixXd m, VectorXd v) {
+	if ( m.cols() == v.size() ) {
+		return m * v;
+	} else {
+		cout << "Transformation matrix is not compliant with point vector." << endl;
+		exit(-1);
+	}
+}	
+*/
