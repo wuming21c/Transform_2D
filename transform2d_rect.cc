@@ -65,15 +65,6 @@ int main( int argc, char* argv[])
 
 	src2 = src.clone();	// Canvas with grid
 
-	/*
-	Mat src_t; 	// ..      translation
-	Mat src_r; 	// ..	   rigid rotation
-	Mat src_sim; 	// ..	   similarity
-	Mat src_aff; 	// ..	   affine
-	Mat src_p; 	// ..	   perspective
-	*/
-
-
 	namedWindow( win_name, WINDOW_AUTOSIZE );
 	imshow( win_name, src);
 	const char* TrackbarName = "Rectangle Size";
@@ -82,7 +73,6 @@ int main( int argc, char* argv[])
 	draw_shapes(orig_size, 0);
 	
 	waitKey(0);
-	cout << "print out line for check point." << endl;
 
 	return 0;
 }
